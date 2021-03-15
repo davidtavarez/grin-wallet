@@ -1,4 +1,4 @@
-// Copyright 2019 The Grin Developers
+// Copyright 2021 The Grin Developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -718,7 +718,7 @@ where
 	/// The slate created by this function will contain the amount, an output for the amount,
 	/// as well as round 1 of singature creation complete. The slate should then be send
 	/// to the payer, who should add their inputs and signature data and return the slate
-	/// via the [Foreign API's `finalize_invoice_tx`](struct.Foreign.html#method.finalize_invoice_tx) method.
+	/// via the [Foreign API's `finalize_tx`](struct.Foreign.html#method.finalize_tx) method.
 	///
 	/// # Arguments
 	/// * `keychain_mask` - Wallet secret mask to XOR against the stored wallet seed before using, if
@@ -2436,7 +2436,7 @@ macro_rules! doctest_helper_setup_doc_env {
 		// don't run on windows CI, which gives very inconsistent results
 		if cfg!(windows) {
 			return;
-			}
+		}
 
 		// Set our local chain_type for testing.
 		global::set_local_chain_type(global::ChainTypes::AutomatedTesting);
@@ -2454,7 +2454,7 @@ macro_rules! doctest_helper_setup_doc_env {
 		let node_client = HTTPNodeClient::new(&wallet_config.check_node_api_http_addr, None);
 		let mut wallet = Box::new(
 			DefaultWalletImpl::<'static, HTTPNodeClient>::new(node_client.clone()).unwrap(),
-			)
+		)
 			as Box<
 				WalletInst<
 					'static,
@@ -2462,7 +2462,7 @@ macro_rules! doctest_helper_setup_doc_env {
 					HTTPNodeClient,
 					ExtKeychain,
 				>,
-				>;
+			>;
 		let lc = wallet.lc_provider().unwrap();
 		let _ = lc.set_top_level_directory(&wallet_config.data_file_dir);
 		lc.open_wallet(None, pw, false, false);

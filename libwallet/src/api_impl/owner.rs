@@ -1,4 +1,4 @@
-// Copyright 2019 The Grin Develope;
+// Copyright 2021 The Grin Develope;
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -907,7 +907,7 @@ where
 		Some(tx) => {
 			let mut slate = Slate::blank(2, false);
 			slate.tx = Some(tx.clone());
-			slate.fee_fields = tx.aggregate_fee_fields(0).unwrap();
+			slate.fee_fields = tx.aggregate_fee_fields(2 * YEAR_HEIGHT).unwrap(); // apply fee mask past HF4
 			slate.id = id.clone();
 			slate.offset = tx.offset;
 			slate.state = SlateState::Standard3;

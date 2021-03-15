@@ -1,4 +1,4 @@
-// Copyright 2019 The Grin Developers
+// Copyright 2021 The Grin Developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -379,7 +379,7 @@ impl Slate {
 	}
 
 	// This is the msg that we will sign as part of the tx kernel.
-	fn msg_to_sign(&self) -> Result<secp::Message, Error> {
+	pub fn msg_to_sign(&self) -> Result<secp::Message, Error> {
 		let msg = self.kernel_features()?.kernel_sig_msg()?;
 		Ok(msg)
 	}
@@ -432,7 +432,7 @@ impl Slate {
 	}
 
 	/// Return the sum of public nonces
-	fn pub_nonce_sum(&self, secp: &secp::Secp256k1) -> Result<PublicKey, Error> {
+	pub fn pub_nonce_sum(&self, secp: &secp::Secp256k1) -> Result<PublicKey, Error> {
 		let pub_nonces: Vec<&PublicKey> = self
 			.participant_data
 			.iter()

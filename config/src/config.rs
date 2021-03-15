@@ -1,4 +1,4 @@
-// Copyright 2019 The Grin Developers
+// Copyright 2021 The Grin Developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ const GRIN_HOME: &str = ".grin";
 /// Wallet data directory
 pub const GRIN_WALLET_DIR: &str = "wallet_data";
 /// Node API secret
-pub const API_SECRET_FILE_NAME: &str = ".api_secret";
+pub const API_SECRET_FILE_NAME: &str = ".foreign_api_secret";
 /// Owner API secret
 pub const OWNER_API_SECRET_FILE_NAME: &str = ".owner_api_secret";
 
